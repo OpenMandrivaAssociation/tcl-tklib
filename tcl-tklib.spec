@@ -6,6 +6,7 @@ Summary:        Tklib is a collection of utility modules for Tk
 License:        BSD
 Group:          Networking/WWW
 Source:         http://ovh.dl.sourceforge.net/sourceforge/tcllib/%oname-%version.tar.bz2
+BuildRoot:      %{_tmppath}/%{name}-root
 URL:            http://www.tcl.tk/software/tcllib/
 
 BuildRequires:  tk
