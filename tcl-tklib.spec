@@ -17,7 +17,6 @@ BuildRequires:  tcl
 Obsoletes:      tk-tklib
 
 %description
-
 Tklib is like Tcllib, a collection of many small packages providing 
 utilities, except that packages here are expected to depend on Tk. 
 Tklib specializes in utilities for GUI programming.
