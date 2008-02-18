@@ -2,7 +2,7 @@
 Name:           tcl-%{oname}
 Version:        0.4.1
 Release:        %mkrel 2
-Summary:        Tklib is a collection of utility modules for Tk
+Summary:        Collection of utility modules for Tk
 License:        BSD
 Group:          Networking/WWW
 Source:         http://ovh.dl.sourceforge.net/sourceforge/tcllib/%oname-%version.tar.bz2
