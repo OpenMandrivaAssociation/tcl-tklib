@@ -1,7 +1,7 @@
 %define oname   tklib
 Name:           tcl-%{oname}
 Version:        0.4.1
-Release:        %mkrel 5
+Release:        %mkrel 6
 Summary:        Collection of utility modules for Tk
 License:        BSD
 Group:          Networking/WWW
