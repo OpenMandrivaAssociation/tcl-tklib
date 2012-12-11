@@ -46,3 +46,34 @@ rm -rf %{buildroot}
 rm -rf %{buildroot}
 
 
+
+
+%changelog
+* Wed Sep 09 2009 Thierry Vignaud <tvignaud@mandriva.com> 0.4.1-7mdv2010.0
++ Revision: 434311
+- rebuild
+
+* Sat Aug 02 2008 Thierry Vignaud <tvignaud@mandriva.com> 0.4.1-6mdv2009.0
++ Revision: 261431
+- rebuild
+
+* Wed Jul 30 2008 Thierry Vignaud <tvignaud@mandriva.com> 0.4.1-5mdv2009.0
++ Revision: 254193
+- rebuild
+- rebuild
+- fix "foobar is blabla" summary (=> "blabla") so that it looks nice in rpmdrake
+- fix spacing at top of description
+
+* Wed Jan 02 2008 Olivier Blin <oblin@mandriva.com> 0.4.1-2mdv2008.1
++ Revision: 140918
+- restore BuildRoot
+
+  + Thierry Vignaud <tvignaud@mandriva.com>
+    - kill re-definition of %%buildroot on Pixel's request
+
+
+* Tue Dec 19 2006 Nicolas Lécureuil <neoclust@mandriva.org> 0.4.1-2mdv2007.0
++ Revision: 99108
+- Fix BuildRequires
+- Import tcl-tklib
+
