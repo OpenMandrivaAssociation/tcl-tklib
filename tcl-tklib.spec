@@ -1,79 +1,62 @@
-%define oname   tklib
-Name:           tcl-%{oname}
-Version:        0.4.1
-Release:        8
-Summary:        Collection of utility modules for Tk
-License:        BSD
-Group:          Networking/WWW
-Source:         http://ovh.dl.sourceforge.net/sourceforge/tcllib/%oname-%version.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-root
-URL:            http://www.tcl.tk/software/tcllib/
+%define oname	tklib
 
-BuildRequires:  tk
-BuildRequires:  groff-for-man
-BuildRequires:  tcl-tcllib
-BuildRequires:  tcl
+Summary:	Collection of utility modules for Tk
+Name:		tcl-%{oname}
+Version:	0.5
+Release:	1
+License:	BSD
+Group:		Networking/WWW
+URL:		https://core.tcl.tk/tklib/home
+Source:	 	http://downloads.sourceforge.net/project/tcllib/%{oname}/%{version}/%{oname}-%{version}.tar.bz2
+BuildArch:	noarch
 
-Obsoletes:      tk-tklib
+BuildRequires:	tk
+BuildRequires:	groff-for-man
+BuildRequires:	tcl
+BuildRequires:	tcl-tcllib
+
+Requires:	tcl(abi) = 8.6
+Requires:	tcl-tcllib
+Requires:	tk
 
 %description
-Tklib is like Tcllib, a collection of many small packages providing 
-utilities, except that packages here are expected to depend on Tk. 
-Tklib specializes in utilities for GUI programming.
+Tklib is intended to be a collection of Tcl packages that provide utility
+functions useful to a large collection of Tcl programmers.
 
 %files
-%defattr(-,root,root,0755)
-%dir %{_libdir}/tklib0.4
-%{_libdir}/tklib0.4/*
+%dir %{tcl_sitelib}/tklib%{version}
+%{tcl_sitelib}/tklib%{version}/*
 %{_mandir}/mann/*
+%doc README
+%doc README-0.4.txt
+%doc README-0.5.txt
+%doc PACKAGES
+%doc ChangeLog
+%doc license.terms
+
 #--------------------------------------------------------------------
 
 %prep
 %setup -q -n %oname-%version
+%apply_patches
+
+# fix spurious permissions
+for d in diagrams khim plotchart swaplist widget
+do
+ chmod a-x modules/${d}/*.tcl
+done
+chmod a-x modules/khim/*.msg
+
 %build
-
-%configure
-
-%make 
-
+%configure \
+	--libdir=%{tcl_sitelib}
+	%{nil}
+# There's nothing to build here
+#% make
 
 %install
-rm -rf %{buildroot}
+%makeinstall_std
 
-%makeinstall
-
-%clean
-rm -rf %{buildroot}
-
-
-
-
-%changelog
-* Wed Sep 09 2009 Thierry Vignaud <tvignaud@mandriva.com> 0.4.1-7mdv2010.0
-+ Revision: 434311
-- rebuild
-
-* Sat Aug 02 2008 Thierry Vignaud <tvignaud@mandriva.com> 0.4.1-6mdv2009.0
-+ Revision: 261431
-- rebuild
-
-* Wed Jul 30 2008 Thierry Vignaud <tvignaud@mandriva.com> 0.4.1-5mdv2009.0
-+ Revision: 254193
-- rebuild
-- rebuild
-- fix "foobar is blabla" summary (=> "blabla") so that it looks nice in rpmdrake
-- fix spacing at top of description
-
-* Wed Jan 02 2008 Olivier Blin <oblin@mandriva.com> 0.4.1-2mdv2008.1
-+ Revision: 140918
-- restore BuildRoot
-
-  + Thierry Vignaud <tvignaud@mandriva.com>
-    - kill re-definition of %%buildroot on Pixel's request
-
-
-* Tue Dec 19 2006 Nicolas Lécureuil <neoclust@mandriva.org> 0.4.1-2mdv2007.0
-+ Revision: 99108
-- Fix BuildRequires
-- Import tcl-tklib
+%check
+%make check
 
