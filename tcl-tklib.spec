@@ -38,7 +38,7 @@ functions useful to a large collection of Tcl programmers.
 
 %prep
 %setup -q -n %oname-%version
-%apply_patches
+%autopatch -p1
 
 # fix spurious permissions
 for d in diagrams khim plotchart swaplist widget
