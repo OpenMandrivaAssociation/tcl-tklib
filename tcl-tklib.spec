@@ -12,7 +12,7 @@ BuildArch:	noarch
 
 BuildRequires:	tk
 BuildRequires:	groff-for-man
-BuildRequires:	tcl
+BuildRequires:	tcl-devel
 BuildRequires:	tcl-tcllib
 
 Requires:	tcl(abi) = 8.6
@@ -37,8 +37,7 @@ functions useful to a large collection of Tcl programmers.
 #--------------------------------------------------------------------
 
 %prep
-%setup -q -n %oname-%version
-%autopatch -p1
+%autosetup -p1 -n %oname-%version
 
 # fix spurious permissions
 for d in diagrams khim plotchart swaplist widget
@@ -55,7 +54,7 @@ chmod a-x modules/khim/*.msg
 #% make
 
 %install
-%makeinstall_std
+%make_install
 
 %check
 %make check
