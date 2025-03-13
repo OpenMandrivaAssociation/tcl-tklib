@@ -1,0 +1,4 @@
+addFilter("E: script-without-shebang.*")
+addFilter("E: env-script-interpreter.*")
+addFilter("E: non-executable-script.*")
+

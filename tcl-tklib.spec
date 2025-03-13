@@ -2,13 +2,13 @@
 
 Summary:	Collection of utility modules for Tk
 Name:		tcl-%{oname}
-Version:	0.7
+Version:	0.9
 Release:	1
 License:	BSD
-Group:		Networking/WWW
+Group:		System/Libraries
 URL:		https://core.tcl.tk/tklib/home
-#Source:	http://downloads.sourceforge.net/project/tcllib/%{oname}/%{version}/%{oname}-%{version}.tar.bz2
-Source0:	https://core.tcl-lang.org/tklib/attachdownload/%{oname}-%{version}.tar.bz2?page=Downloads&file=%{oname}-%{version}.tar.bz2
+Source0:	https://downloads.sourceforge.net/project/tcllib/%{oname}/%{version}/%{oname}-%{version}.tar.bz2
+#Source0:	https://core.tcl-lang.org/tklib/attachdownload/%{oname}-%{version}.tar.bz2?page=Downloads&file=%{oname}-%{version}.tar.bz2
 BuildArch:	noarch
 
 BuildRequires:	tk
@@ -16,7 +16,7 @@ BuildRequires:	groff-for-man
 BuildRequires:	tcl-devel
 BuildRequires:	tcl-tcllib
 
-Requires:	tcl(abi) = 8.6
+Requires:	tcl(abi) = %{tcl_version}
 Requires:	tcl-tcllib
 Requires:	tk
 
@@ -25,8 +25,9 @@ Tklib is intended to be a collection of Tcl packages that provide utility
 functions useful to a large collection of Tcl programmers.
 
 %files
-%_bindir/bitmap-editor
-%_bindir/diagram-viewer
+%{_bindir}/bitmap-editor
+%{_bindir}/diagram-viewer
+%{_bindir}/shtmlview
 %dir %{tcl_sitelib}/tklib%{version}
 %{tcl_sitelib}/tklib%{version}/*
 %{_mandir}/mann/*
@@ -57,5 +58,5 @@ chmod a-x modules/khim/*.msg
 %make_install
 
 %check
-%make check
+make check
 
