@@ -11,6 +11,11 @@ Source0:	https://downloads.sourceforge.net/project/tcllib/%{oname}/%{version}/%{
 #Source0:	https://core.tcl-lang.org/tklib/attachdownload/%{oname}-%{version}.tar.bz2?page=Downloads&file=%{oname}-%{version}.tar.bz2
 BuildArch:	noarch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	tk
 BuildRequires:	groff-for-man
 BuildRequires:	tcl-devel
